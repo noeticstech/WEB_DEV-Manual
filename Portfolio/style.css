@@ -1,0 +1,12 @@
+body{
+    max-width: 760px;
+    padding:24px;
+    background: #b6cbe8;
+}
+h1{
+    max-width: 40%;
+    color: #463d20;
+    background-color: rgb(215, 192, 123);
+    padding: 12px;
+    border-radius: 8px;
+}

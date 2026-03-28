@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Portfolio</h1>
+        <nav>
+            <table>
+                <tr>
+                    <td><a href="#home" placeholder = "HOME">Home</a></td>
+                    <td><a href="#about" placeholder = "ABOUT">About</a></td>
+                    <td><a href="#certifications" placeholder = "CERTIFICATIONS">Certifications</a></td>
+                    <td><a href="#skills" placeholder = "SKILLS">Skills</a></td>
+                    <td><a href="#projects" placeholder = "PROJECTS">Projects</a></td>
+                    <td><a href="#blog" placeholder = "BLOG">Blog</a></td>
+                    <td><a href="#contact" placeholder = "CONTACT">Contact</a></td>
+                </tr>
+            </table>
+        </nav>
+    </header>
+    <main>
+        <section id = "home">
+            <div class="profile-picture">
+                <img src="profile.jpg" alt="Profile Picture">
+            </div>
+            <h2>Welcome to My Portfolio</h2>
+            <ul>
+                <li>Hi, I'm Vaibhav, a passionate web developer. Welcome to my corner of the internet!</li>
+                <li>Explore my projects, certifications, and skills to learn more about my journey in the world of web development.</li>
+                <li>Feel free to reach out if you have any questions or want to collaborate on a project!</li>
+                <li>I'm always excited to learn new technologies and take on challenging projects.</li>
+            </ul>
+        </section>
+        <section id = "about">
+            <h2>About Me</h2>
+            <p>I'm a web developer with a passion for creating dynamic and responsive websites. With a background in computer science, I have experience in various programming languages and frameworks. I enjoy solving complex problems and continuously improving my skills to stay up-to-date with the latest industry trends.</p>
+
+        </section>
+        <section id = "certifications">
+            <h2>Certifications</h2>
+            <ul>
+                <li><a src="certification1.html">Certification 1</a></li>
+                <li><a src="certification2.html">Certification 2</a></li>
+                <li><a src="certification3.html">Certification 3</a></li>
+            </ul>
+
+        </section>
+
+        <section id = "skills">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Programming Languages</h3>
+                    <table class="skill-table">
+                        <thead>
+                            <tr>
+                                <th>Language</th>
+                                <th>Proficiency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>HTML</td>
+                                <td>Advanced</td>
+                            </tr>
+                            <tr>
+                                <td>CSS</td>
+                                <td>Advanced</td>
+                            </tr>
+                            <tr>
+                                <td>JavaScript</td>
+                                <td>Intermediate</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Frameworks</h3>
+                    <table class="skill-table">
+                        <thead>
+                            <tr>
+                                <th>Framework</th>
+                                <th>Proficiency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>React</td>
+                                <td>Intermediate</td>
+                            </tr>
+                            <tr>
+                                <td>Node.js</td>
+                                <td>Beginner</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Tools</h3>
+                    <table class="skill-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Proficiency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Git</td>
+                                <td>Advanced</td>
+                            </tr>
+                            <tr>
+                                <td>VS Code</td>
+                                <td>Advanced</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+        <section id = "projects">
+            <h2>Projects</h2>
+            <table>
+                <thead>
+                <ul>
+                    <li><a href="project1.html">Project 1: Personal Portfolio Website</a></li>
+                    <li><a href="project2.html">Project 2: E-commerce Website</a></li>
+                    <li><a href="project3.html">Project 3: Blogging Platform</a></li>
+                </ul>
+                </thead>
+            </table>
+        </section>
+
+        <section id = "blog">
+            <h2>Blog</h2>
+            <li><a href="blog1.html">Blog Post 1: My Journey into Web Development</a></li>
+            <li><a href="blog2.html">Blog Post 2: Top 5 Web Development Tools in 2024</a></li>
+            <li><a href="blog3.html">Blog Post 3: How to Stay Updated with Web Development Trends</a></li>
+
+        </section>
+        <section id = "conrtact">
+            <h2>Contact Me</h2>
+            <p>If you have any questions, want to collaborate on a project, or just want to say hi, feel free to reach out to me!</p>
+            <ul>
+                <li>Email: <a href="mailto:noeticstch@example.com">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/email.svg" alt="Email" width="24" height="24"></a>
+                </li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/noeticstech" target="_blank">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linkedin.svg" alt="LinkedIn" width="24" height="24"></a>
+                </li>
+                <li>GitHub: <a href="https://github.com/noeticstech" target="_blank">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" alt="GitHub" width="24" height="24"></a>
+                </li>
+            </ul>
+        </section>
+        <section id = "contact-form">
+            <h2>Contact Form</h2>
+            <form action="submit_form.php" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+        <section id = "thoughts">
+            <h2>Quote</h2>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 NoeticsTech. All rights reserved.</p>
+    </footer>  
+    
+</body>
+</html>
