@@ -1,0 +1,534 @@
+/* =========================================================
+   1. RESET
+   Removes default spacing and makes element sizing easier.
+   ========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --navy: #172a3a;
+  --blue: #137c8b;
+  --blue-dark: #0d6571;
+  --blue-light: #e3f3f5;
+  --green: #2aa876;
+  --green-light: #e6f7ef;
+  --orange: #e98b43;
+  --red: #d85c5c;
+  --cream: #f8f7f2;
+  --white: #ffffff;
+  --text: #344553;
+  --muted: #7a8994;
+  --border: #dde5e7;
+  --shadow: 0 14px 35px rgba(23, 42, 58, 0.08);
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background-color: var(--cream);
+  line-height: 1.5;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  width: min(92%, 1120px);
+  margin: 0 auto;
+}
+
+/* =========================================================
+   2. HEADER AND HERO
+   Flexbox places the logo and date on opposite sides.
+   ========================================================= */
+.site-header {
+  padding: 1.1rem 0;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-content,
+.brand,
+.section-heading,
+.tasks-top,
+.stat-card,
+.progress-label {
+  display: flex;
+  align-items: center;
+}
+
+.header-content,
+.tasks-top,
+.progress-label {
+  justify-content: space-between;
+}
+
+.brand {
+  gap: 0.65rem;
+  color: var(--navy);
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  color: var(--white);
+  background-color: var(--blue);
+}
+
+.today-date {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.hero {
+  padding: 4.5rem 0 3rem;
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--blue);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.hero h1 {
+  margin: 0.45rem 0 0.8rem;
+  color: var(--navy);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.4rem, 7vw, 4.5rem);
+  line-height: 1.05;
+}
+
+.hero h1 span {
+  color: var(--blue);
+}
+
+.hero > p:last-child {
+  max-width: 580px;
+  margin: 0 auto;
+  color: var(--muted);
+}
+
+/* =========================================================
+   3. MAIN APP LAYOUT
+   CSS Grid creates two columns on larger screens.
+   ========================================================= */
+.app-layout {
+  display: grid;
+  grid-template-columns: 0.85fr 1.35fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.card {
+  padding: 1.75rem;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.section-heading {
+  gap: 0.85rem;
+}
+
+.section-heading h2,
+.progress-section h2 {
+  color: var(--navy);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.heading-icon,
+.stat-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  color: var(--blue);
+  background-color: var(--blue-light);
+  font-size: 1.3rem;
+}
+
+/* =========================================================
+   4. FORM
+   ========================================================= */
+form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.6rem;
+}
+
+.form-group {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+label {
+  color: var(--navy);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  outline: none;
+  color: var(--text);
+  background-color: #fbfcfc;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(19, 124, 139, 0.12);
+}
+
+.primary-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem;
+  border: none;
+  border-radius: 9px;
+  color: var(--white);
+  background-color: var(--blue);
+  font-weight: 700;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.primary-button:hover {
+  background-color: var(--blue-dark);
+  transform: translateY(-1px);
+}
+
+.form-message {
+  min-height: 1.2rem;
+  color: var(--green);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+.study-tip {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 1px solid #f2e3ba;
+  border-radius: 12px;
+  background-color: #fffaf0;
+}
+
+.tip-icon {
+  color: #d89b27;
+}
+
+.study-tip h3 {
+  margin-bottom: 0.2rem;
+  color: var(--navy);
+  font-size: 0.85rem;
+}
+
+.study-tip p {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+/* =========================================================
+   5. FILTERS AND TASK ITEMS
+   ========================================================= */
+.text-button {
+  border: none;
+  color: var(--muted);
+  background: none;
+  font-size: 0.78rem;
+}
+
+.text-button:hover {
+  color: var(--red);
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 0.3rem;
+  margin: 1.4rem 0 1rem;
+  padding: 0.3rem;
+  border-radius: 10px;
+  background-color: #f1f4f4;
+}
+
+.filter {
+  flex: 1;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 7px;
+  color: var(--muted);
+  background: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.filter.active {
+  color: var(--blue);
+  background-color: var(--white);
+  box-shadow: 0 2px 7px rgba(23, 42, 58, 0.08);
+}
+
+.task-list {
+  display: grid;
+  gap: 0.75rem;
+  list-style: none;
+}
+
+.task-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.task-item:hover {
+  border-color: #a9c9cd;
+  transform: translateY(-1px);
+}
+
+.complete-button {
+  display: grid;
+  place-items: center;
+  width: 23px;
+  height: 23px;
+  border: 2px solid #b9c6ca;
+  border-radius: 50%;
+  color: transparent;
+  background-color: var(--white);
+}
+
+.task-item.completed .complete-button {
+  border-color: var(--green);
+  color: var(--white);
+  background-color: var(--green);
+}
+
+.task-name {
+  color: var(--navy);
+  font-size: 0.93rem;
+  font-weight: 700;
+}
+
+.task-item.completed .task-name {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.task-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.tag {
+  padding: 0.16rem 0.45rem;
+  border-radius: 999px;
+  color: var(--blue);
+  background-color: var(--blue-light);
+}
+
+.priority-High {
+  color: var(--red);
+  background-color: #fbeaea;
+}
+
+.priority-Low {
+  color: var(--green);
+  background-color: var(--green-light);
+}
+
+.delete-button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  color: #a6b0b6;
+  background: none;
+  font-size: 1.15rem;
+}
+
+.delete-button:hover {
+  color: var(--red);
+  background-color: #fbeaea;
+}
+
+.empty-state {
+  padding: 3.3rem 1rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.empty-icon {
+  display: grid;
+  place-items: center;
+  width: 55px;
+  height: 55px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  color: var(--green);
+  background-color: var(--green-light);
+  font-size: 1.4rem;
+}
+
+.empty-state h3 {
+  margin-bottom: 0.3rem;
+  color: var(--navy);
+}
+
+.empty-state p {
+  font-size: 0.83rem;
+}
+
+/* =========================================================
+   6. PROGRESS SECTION
+   ========================================================= */
+.progress-section {
+  padding: 4rem 0;
+}
+
+.progress-grid {
+  display: grid;
+  grid-template-columns: 0.7fr 0.7fr 1.6fr;
+  gap: 1rem;
+  margin-top: 1.3rem;
+}
+
+.stat-card {
+  gap: 0.8rem;
+  padding: 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background-color: var(--white);
+}
+
+.stat-icon.green {
+  color: var(--green);
+  background-color: var(--green-light);
+}
+
+.stat-card strong {
+  color: var(--navy);
+  font-size: 1.35rem;
+}
+
+.stat-card p {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.progress-card {
+  display: block;
+}
+
+.progress-label strong {
+  color: var(--blue);
+  font-size: 0.9rem;
+}
+
+.progress-track {
+  height: 9px;
+  margin-top: 0.9rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background-color: #e8eeee;
+}
+
+.progress-fill {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background-color: var(--green);
+  transition: width 0.35s ease;
+}
+
+footer {
+  padding: 1.3rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  background-color: var(--white);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+/* =========================================================
+   7. RESPONSIVE DESIGN
+   At smaller widths, columns become one column.
+   ========================================================= */
+@media (max-width: 780px) {
+  .app-layout,
+  .progress-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 3.3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .today-date {
+    display: none;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .tasks-top {
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}

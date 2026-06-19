@@ -1,12 +1,597 @@
-body{
-    max-width: 760px;
-    padding:24px;
-    background: #b6cbe8;
+/* =========================================================
+   Portfolio CSS
+   This file only controls how the HTML looks.
+   HTML gives the page structure. CSS gives it color, spacing,
+   layout, fonts, borders, and responsive behavior.
+   ========================================================= */
+
+/* :root means "the whole page".
+   We store reusable values here as CSS variables.
+   Example: var(--accent) below will reuse this same teal color.
+   This makes the site easier to update because one change here
+   can update many places. */
+:root {
+    --bg: #f4f7fb;
+    --surface: #ffffff;
+    --surface-soft: #edf7f6;
+    --text: #17202a;
+    --muted: #5c6670;
+    --accent: #007f7a;
+    --accent-dark: #005f5b;
+    --accent-warm: #f06c55;
+    --gold: #f7b731;
+    --border: #d9e2ec;
+    --shadow: 0 18px 45px rgba(23, 32, 42, 0.08);
+    --radius: 8px;
+    --content-width: 1060px;
 }
-h1{
-    max-width: 40%;
-    color: #463d20;
-    background-color: rgb(215, 192, 123);
-    padding: 12px;
-    border-radius: 8px;
+
+/* The universal selector (*) selects every element.
+   box-sizing: border-box makes width easier to understand:
+   if an element is 300px wide, its padding and border stay inside
+   that 300px instead of making it bigger. */
+* {
+    box-sizing: border-box;
+}
+
+/* Smooth scrolling makes clicking menu links move nicely
+   instead of jumping instantly. */
+html {
+    scroll-behavior: smooth;
+}
+
+/* body is the visible page area.
+   margin: 0 removes the browser's default white gap around the page.
+   min-height: 100vh means the body is at least the full screen height.
+   line-height controls the vertical space between text lines. */
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    background:
+        linear-gradient(135deg, rgba(0, 127, 122, 0.12), transparent 36%),
+        linear-gradient(315deg, rgba(240, 108, 85, 0.13), transparent 32%),
+        var(--bg);
+}
+
+/* Images are inline by default, which can create tiny unwanted gaps.
+   display: block removes that gap.
+   max-width: 100% stops images from overflowing their parent box. */
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* Links should look clickable.
+   text-underline-offset moves the underline away from the letters
+   so it is easier to read. */
+a {
+    color: var(--accent-dark);
+    font-weight: 700;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+/* :hover means "when the mouse is over this element".
+   This gives users feedback that the link can be clicked. */
+a:hover {
+    color: var(--accent-warm);
+}
+
+/* :focus-visible appears when a keyboard user tabs to a link,
+   input, or button. This is important for accessibility. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+}
+
+/* Header contains the page title and navigation.
+   display: flex turns the direct children of header into flexible items.
+   Here the direct children are h1 and nav.
+   Flex is useful when you want items in a row or column and want
+   the browser to handle spacing nicely.
+   align-items: center vertically aligns h1 and nav.
+   justify-content: space-between pushes h1 left and nav right.
+   flex-wrap: wrap allows nav to move to the next line on small screens. */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 22px 20px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    background: rgba(244, 247, 251, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(217, 226, 236, 0.9);
+}
+
+/* h1 is the main title of the page.
+   margin: 0 removes the default heading spacing so we control it.
+   border-radius rounds the corners. */
+h1 {
+    margin: 0;
+    padding: 10px 16px;
+    color: #2b2413;
+    background: linear-gradient(135deg, #ffe7a3, var(--gold));
+    border: 1px solid rgba(43, 36, 19, 0.16);
+    border-radius: var(--radius);
+    font-size: 2rem;
+    line-height: 1.1;
+    box-shadow: 0 10px 25px rgba(247, 183, 49, 0.22);
+}
+
+/* The HTML uses a table for the nav.
+   We are not changing the HTML, so CSS makes that table behave like
+   a flexible row of menu links.
+   display: flex on tr lets each td sit like a menu item. */
+nav table,
+nav tbody,
+nav tr {
+    display: flex;
+}
+
+/* gap adds space between flex children.
+   It is cleaner than adding margin to every single nav item. */
+nav tr {
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+/* Table cells normally have table behavior.
+   padding: 0 removes extra spacing so the link itself controls size. */
+nav td {
+    padding: 0;
+}
+
+/* Navigation links are styled like small buttons.
+   display: inline-flex lets the link center its text neatly.
+   inline-flex means it behaves like text in a line, but inside it
+   uses flexbox alignment. */
+nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 8px 12px;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    box-shadow: 0 8px 18px rgba(23, 32, 42, 0.05);
+    transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* transform: translateY(-2px) moves the link up a little on hover.
+   transition above makes that movement smooth. */
+nav a:hover {
+    color: var(--accent-dark);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* main wraps the important page content.
+   max-width keeps long lines from becoming too wide.
+   margin: 0 auto centers the content horizontally.
+   display: flex with flex-direction: column stacks sections vertically.
+   gap controls the space between sections. */
+main {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 24px 20px 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+/* section styles apply to each major content block.
+   Background and borders make sections readable, but the small radius
+   keeps the portfolio clean instead of overly bubbly. */
+section {
+    padding: 34px;
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+/* scroll-margin-top creates space when jumping to a section from nav.
+   Without it, the sticky header can cover the section title. */
+section {
+    scroll-margin-top: 110px;
+}
+
+/* Headings inside sections.
+   h2 is for section titles, h3 is for smaller titles inside sections. */
+h2,
+h3 {
+    margin-top: 0;
+    color: var(--text);
+    line-height: 1.2;
+}
+
+h2 {
+    margin-bottom: 18px;
+    font-size: 1.75rem;
+}
+
+h3 {
+    margin-bottom: 14px;
+    font-size: 1.15rem;
+}
+
+/* Paragraphs have default margins in browsers.
+   This keeps paragraph spacing consistent. */
+p {
+    margin: 0 0 16px;
+    color: var(--muted);
+}
+
+/* Lists are used in home, certifications, projects, blog, and contact.
+   padding-left gives bullets room.
+   margin-bottom: 0 prevents extra space at the end of a section. */
+ul {
+    margin: 0;
+    padding-left: 22px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+li:last-child {
+    margin-bottom: 0;
+}
+
+/* Home section layout.
+   display: grid creates rows and columns.
+   Grid is good when you want a two-dimensional layout.
+   Flex is usually best for one row or one column.
+   Grid is usually best when you want columns and rows together. */
+#home {
+    display: grid;
+    grid-template-columns: minmax(180px, 260px) 1fr;
+    align-items: center;
+    gap: 24px 34px;
+    background:
+        linear-gradient(135deg, rgba(0, 127, 122, 0.11), transparent 55%),
+        var(--surface);
+}
+
+/* The profile picture should take the left column and cover two rows:
+   one row beside the h2 and one row beside the list. */
+.profile-picture {
+    grid-row: span 2;
+    width: 100%;
+    max-width: 260px;
+    aspect-ratio: 1;
+    padding: 8px;
+    background:
+        radial-gradient(circle at top left, rgba(247, 183, 49, 0.38), transparent 42%),
+        var(--surface-soft);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+}
+
+/* object-fit: cover tells the image to fill its box without stretching.
+   border-radius: 50% makes the image a circle. */
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #d7e8e6;
+    border-radius: 50%;
+    border: 4px solid var(--surface);
+}
+
+#home h2 {
+    margin-bottom: 0;
+    font-size: 2rem;
+}
+
+/* This targets the list in the home section only. */
+#home ul {
+    padding-left: 20px;
+}
+
+/* About text gets a little larger because it is a main intro paragraph. */
+#about p {
+    max-width: 78ch;
+    font-size: 1.05rem;
+}
+
+/* Certifications and projects use link lists.
+   These rules make those links feel like clear rows. */
+#certifications li,
+#projects li,
+#blog li {
+    padding: 10px 12px;
+    background: var(--surface-soft);
+    border: 1px solid rgba(0, 127, 122, 0.13);
+    border-radius: var(--radius);
+}
+
+/* Some blog list items are direct li elements without a wrapping ul
+   in the HTML. This selector still styles them safely. */
+#blog li {
+    list-style-position: inside;
+}
+
+/* The projects HTML places a list inside a table.
+   Since we are not touching HTML, these display rules make that area
+   behave like normal block content instead of a broken-looking table. */
+#projects table,
+#projects thead {
+    display: block;
+    width: 100%;
+}
+
+/* CSS Grid for skill cards.
+   repeat(auto-fit, minmax(240px, 1fr)) means:
+   "Create as many columns as fit. Each column should be at least
+   240px wide, and if there is extra room, share it equally." */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+}
+
+/* A card is used here because skills are repeated small content blocks.
+   overflow: hidden clips anything that tries to escape the rounded corners. */
+.skill-card {
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 12px 28px rgba(23, 32, 42, 0.06);
+}
+
+.skill-card h3 {
+    margin: 0;
+    padding: 16px 18px;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+}
+
+/* border-collapse: collapse makes table borders touch each other
+   instead of creating double borders. */
+.skill-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* th means table header cell.
+   td means table data cell.
+   Padding creates breathing room inside each cell. */
+.skill-table th,
+.skill-table td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+/* thead is the table header area. */
+.skill-table thead {
+    color: var(--text);
+    background: #f8fafc;
+}
+
+/* nth-child(even) selects every second row.
+   This makes tables easier to scan. */
+.skill-table tbody tr:nth-child(even) {
+    background: #fbfdff;
+}
+
+.skill-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+/* Contact section.
+   The HTML id is "conrtact", so this selector matches the current file.
+   #contact is included too in case the id is corrected later. */
+#conrtact ul,
+#contact ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-left: 0;
+    list-style: none;
+}
+
+/* Contact items use flex because text and icon sit in one row.
+   align-items: center keeps the label and icon vertically lined up. */
+#conrtact li,
+#contact li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    background: var(--surface-soft);
+    border: 1px solid rgba(0, 127, 122, 0.13);
+    border-radius: var(--radius);
+}
+
+#conrtact img,
+#contact img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Form layout.
+   display: grid stacks labels and fields with a clean gap.
+   max-width stops the form from becoming too wide on large screens. */
+form {
+    max-width: 640px;
+    display: grid;
+    gap: 10px;
+}
+
+/* Labels tell the user what each input is for. */
+label {
+    color: var(--text);
+    font-weight: 700;
+}
+
+/* Inputs and textarea share the same visual style.
+   inherit means they use the same font as the rest of the body. */
+input,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    color: var(--text);
+    font: inherit;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+/* resize: vertical lets the user make the message box taller,
+   but not wider, so it does not break the layout. */
+textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--accent);
+}
+
+/* Button styling.
+   cursor: pointer changes the mouse cursor to show it is clickable.
+   border: 0 removes the default browser button border. */
+button {
+    width: fit-content;
+    margin-top: 6px;
+    padding: 12px 18px;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 700;
+    background: var(--accent);
+    border: 0;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+}
+
+/* Thoughts section has only a title right now.
+   min-height gives it room so it does not look accidentally empty. */
+#thoughts {
+    min-height: 120px;
+    background:
+        linear-gradient(135deg, rgba(247, 183, 49, 0.18), transparent 54%),
+        var(--surface);
+}
+
+/* Footer is the bottom area.
+   text-align: center centers the copyright text. */
+footer {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 24px 20px 34px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    color: var(--muted);
+}
+
+/* Responsive CSS starts here.
+   A media query applies CSS only when a condition is true.
+   max-width: 760px means these rules run on screens 760px wide or less. */
+@media (max-width: 760px) {
+    /* Header becomes a vertical stack so the title and nav have room. */
+    header {
+        align-items: flex-start;
+    }
+
+    nav tr {
+        justify-content: flex-start;
+    }
+
+    /* Home changes from two columns to one column on smaller screens. */
+    #home {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-picture {
+        grid-row: auto;
+    }
+
+    section {
+        padding: 26px;
+    }
+}
+
+/* Very small phone screens need tighter spacing. */
+@media (max-width: 520px) {
+    body {
+        background:
+            linear-gradient(135deg, rgba(0, 127, 122, 0.12), transparent 42%),
+            var(--bg);
+    }
+
+    header,
+    main,
+    footer {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    h1 {
+        font-size: 1.65rem;
+    }
+
+    h2 {
+        font-size: 1.45rem;
+    }
+
+    nav a {
+        min-height: 36px;
+        padding: 7px 10px;
+    }
+
+    section {
+        padding: 22px 18px;
+    }
+
+    #conrtact ul,
+    #contact ul {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+/* Some people prefer less animation.
+   This media query respects that browser setting. */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition: none;
+    }
 }

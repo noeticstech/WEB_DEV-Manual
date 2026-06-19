@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A beginner-friendly study task tracker made with HTML, CSS and JavaScript."
+    />
+    <title>StudyFlow | Study Task Tracker</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <!-- HEADER: The top introduction area of the page. -->
+    <header class="site-header">
+      <div class="container header-content">
+        <a class="brand" href="#" aria-label="StudyFlow home">
+          <span class="brand-icon">&check;</span>
+          <span>StudyFlow</span>
+        </a>
+
+        <p class="today-date" id="today-date">Your daily study companion</p>
+      </div>
+    </header>
+
+    <!-- MAIN: Contains the important content of the application. -->
+    <main class="container">
+      <section class="hero">
+        <p class="eyebrow">STUDY TASK TRACKER</p>
+        <h1>Small tasks. <span>Big progress.</span></h1>
+        <p>
+          Plan what you need to learn, finish one task at a time, and watch your
+          progress grow.
+        </p>
+      </section>
+
+      <div class="app-layout">
+        <!-- FORM SECTION: Takes information from the user. -->
+        <section class="card form-card">
+          <div class="section-heading">
+            <span class="heading-icon">＋</span>
+            <div>
+              <h2>Add a new task</h2>
+              <p>What will you study next?</p>
+            </div>
+          </div>
+
+          <form id="task-form">
+            <div class="form-group">
+              <label for="task-input">Task name</label>
+              <input
+                id="task-input"
+                type="text"
+                placeholder="Example: Practice CSS Flexbox"
+                maxlength="80"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="subject-input">Subject</label>
+              <select id="subject-input">
+                <option value="HTML">HTML</option>
+                <option value="CSS">CSS</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="priority-input">Priority</label>
+                <select id="priority-input">
+                  <option value="Low">Low</option>
+                  <option value="Medium" selected>Medium</option>
+                  <option value="High">High</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="date-input">Due date</label>
+                <input id="date-input" type="date" />
+              </div>
+            </div>
+
+            <button class="primary-button" type="submit">
+              <span>＋</span> Add study task
+            </button>
+
+            <!-- JavaScript changes this message when a task is added. -->
+            <p class="form-message" id="form-message" aria-live="polite"></p>
+          </form>
+
+          <aside class="study-tip">
+            <span class="tip-icon">★</span>
+            <div>
+              <h3>Study tip</h3>
+              <p>Break a big topic into small tasks you can finish in one sitting.</p>
+            </div>
+          </aside>
+        </section>
+
+        <!-- TASK SECTION: JavaScript will create task items inside this area. -->
+        <section class="card tasks-card">
+          <div class="tasks-top">
+            <div class="section-heading">
+              <span class="heading-icon list-icon">☷</span>
+              <div>
+                <h2>My study tasks</h2>
+                <p id="task-summary">0 tasks remaining</p>
+              </div>
+            </div>
+
+            <button class="text-button" id="clear-button" type="button">
+              Clear completed
+            </button>
+          </div>
+
+          <!-- Filter buttons use a data-filter attribute for JavaScript. -->
+          <div class="filter-buttons" aria-label="Filter tasks">
+            <button class="filter active" type="button" data-filter="all">
+              All
+            </button>
+            <button class="filter" type="button" data-filter="active">
+              Active
+            </button>
+            <button class="filter" type="button" data-filter="completed">
+              Completed
+            </button>
+          </div>
+
+          <ul id="task-list" class="task-list"></ul>
+
+          <!-- This is shown only when the selected list has no tasks. -->
+          <div class="empty-state" id="empty-state">
+            <div class="empty-icon">✓</div>
+            <h3>No tasks here yet</h3>
+            <p>Add your first study task and begin making progress.</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- STATISTICS: JavaScript updates these numbers. -->
+      <section class="progress-section">
+        <div>
+          <p class="eyebrow">TODAY'S PROGRESS</p>
+          <h2>Keep the momentum going</h2>
+        </div>
+
+        <div class="progress-grid">
+          <article class="stat-card">
+            <span class="stat-icon blue">☷</span>
+            <div>
+              <strong id="total-count">0</strong>
+              <p>Total tasks</p>
+            </div>
+          </article>
+
+          <article class="stat-card">
+            <span class="stat-icon green">✓</span>
+            <div>
+              <strong id="completed-count">0</strong>
+              <p>Completed</p>
+            </div>
+          </article>
+
+          <article class="stat-card progress-card">
+            <div class="progress-label">
+              <p>Overall progress</p>
+              <strong id="progress-percent">0%</strong>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Built with HTML, CSS &amp; JavaScript — one task at a time.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
